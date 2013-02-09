@@ -1,11 +1,14 @@
 # motor.py
 # Author: Daryl Bennet (DWB)
 #
-#   Driver for propellers.
+#   Driver for motors
 
 class Motor:
-    def __init__(self, pins):
+    def __init__(self, pin):
+        print "[*] Initializing motor on pin:", pin
         # Set up pins
+        self.mPin = pin
+
         pass
 
     # setSpeed
@@ -15,4 +18,12 @@ class Motor:
     # with 0 being off, 100 being full forward, and -100
     # being full reverse.
     def setSpeed(self, speed):
+        print "[*] Setting speed on motor:", self.mPin, "speed:", speed
+        self.mCurrentSpeed = speed
+
         pass
+
+if __name__ == "__main__":
+    # Code for testing
+    m1 = Motor(1)
+    m1.setSpeed(75)
