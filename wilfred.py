@@ -21,23 +21,18 @@
 # posistion, and then control the craft to the correct zone. Main loop will
 # be a very fast feedback loop.
 
+from PyQt4.QtGui import *
+from PyQt4 import *
+from mainWindow import *
+import sys
 
-class Wilfred:
-    def __init__(self):
-        print "[*] Wilfred is booting up..."
-    
-        # Start components
-
-    def mainLoop(self):
-        while True:
-            # Gather Command
-
-            # Gather recon
-
-            # Drive the controllers
 
 if __name__ == "__main__":
-    wilfred = Wilfred()
-    wilfred.mainLoop();
+    
+
+    app = QtGui.QApplication(sys.argv)
+    mainWindow = Ui_MainWindow()
+    mainWindow.setupUi()
+    app.exec_loop()
 
     
