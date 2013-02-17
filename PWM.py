@@ -28,7 +28,7 @@ class PWM:
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(pin, GPIO.OUT)    
         self.mPin = pin
-        self.SWITCHING_FREQ = 50.
+        self.SWITCHING_FREQ = 100.
 
         self.mHighPercent = .5
         self.mHighPercentLock = Lock()
@@ -101,10 +101,10 @@ def test(motor1):
     
 
 def fade(motor1):
-    delay = .1
+    delay = 1
     speed = 0
     while True:
-        speed = (speed + 1) % 20
+        speed = (speed + 10) % 100
         motor1.setSpeed(speed)
         time.sleep(delay)
     
