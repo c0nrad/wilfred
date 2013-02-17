@@ -5,7 +5,7 @@
 
 import sys,time
 
-import Rpi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
 class Accelerometer:
     def __init__(self, pins):
