@@ -3,7 +3,7 @@
 #
 #   Retrieves information from the accelerometer
 
-import sys
+import sys,time
 
 import Rpi.GPIO as GPIO
 
@@ -15,7 +15,8 @@ class Accelerometer:
         self.mPins=pins    
         
         #How often acc state is fetched in sec
-        self.refresh_rate = .005
+        self.refresh_rate = 1
+        self.moment_refresh= .005
         
 
     # getState
@@ -41,14 +42,25 @@ class Accelerometer:
     #Need spec sheet from acc to assign a non arbitrary number
     def getState(self):
         while True:
-        
-                if GPIO.mPins(1) == True 
-                x=1
                 
-                if GPIO.mPins(1) == True 
-                y=1
+                #print '[+] Grabing first set of values'
+                x1 = GPIO.input(self.mPins(1))
+                y1 = GPIO.input(self.mPins(2))
+                z1 = GPIO.input(self.mPins(3))
                 
-                if GPIO.mPins(1) == True 
-                z=1
-                             
+                time.sleep(self.moment_refresh)
+                
+                #print '[+] Grabing second set of values'
+                x2 = GPIO.input(self.mPins(1))
+                y2 = GPIO.input(self.mPins(2))
+                z2 = GPIO.input(self.mPins(3))
+                
+                
+                
+                time.sleep(self.refresh_rate)
+                
+                x=x1-x2
+                y=y1-y2
+                z=z1-z2
+                 
         return (x, y, z)
