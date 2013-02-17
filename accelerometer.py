@@ -3,10 +3,20 @@
 #
 #   Retrieves information from the accelerometer
 
+import sys
+
+import Rpi.GPIO as GPIO
 
 class Accelerometer:
     def __init__(self, pins):
-        pass
+        print "[*] Starting Acc:", pin
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setup(pins, GPIO.IN)
+        self.mPins=pins    
+        
+        #How often acc state is fetched in sec
+        self.refresh_rate = .005
+        
 
     # getState
     #
@@ -26,5 +36,19 @@ class Accelerometer:
     #    Same as the x value,
     #
     # z: Not implemented
+    
+    
+    #Need spec sheet from acc to assign a non arbitrary number
     def getState(self):
-        return (0, 0, 0)
+        while True:
+        
+                if GPIO.mPins(1) == True 
+                x=1
+                
+                if GPIO.mPins(1) == True 
+                y=1
+                
+                if GPIO.mPins(1) == True 
+                z=1
+                             
+        return (x, y, z)
