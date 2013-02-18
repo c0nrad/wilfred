@@ -1,0 +1,17 @@
+import resources_rc
+from PyQt4 import QtCore, QtGui
+import mainWindow
+
+class GroundStation(mainWindow.Ui_MainWindow):
+    def __init__(self):
+        MainWindow = QtGui.QMainWindow()
+        self.setupUi(MainWindow)
+        MainWindow.show()
+
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    wilfred 
+    sys.exit(app.exec_())
