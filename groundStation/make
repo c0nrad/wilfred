@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+echo "[*] Building groundStation..."
+
+echo "[+] Removing old files..."
+rm *~
+rm *.pyc
+rm mainWindow.py
+rm resources_rc.py
+rm -r __pycache__
+
+echo "[+] Building UI..."
+pyrcc4 -py2 -py3 resources.qrc -o resources_rc.py
+
+echo "[+] Building resource files..."
+pyuic4 -x mainWindow.ui -o mainWindow.py
+
+echo "[+] Done!"

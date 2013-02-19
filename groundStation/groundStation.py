@@ -1,17 +1,45 @@
 import resources_rc
-from PyQt4 import QtCore, QtGui
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
+from command import Command
 import mainWindow
 import sys
 
-class GroundStation(QtGui.QMainWindow, mainWindow.Ui_MainWindow):
+from debug import *
+
+class GroundStation(QMainWindow, mainWindow.Ui_MainWindow):
     def __init__(self):
-        QtGui.QMainWindow.__init__(self)
+        QMainWindow.__init__(self)
         self.setupUi(self)
+        self.wilfredCommand = Command()
+
+        self.connect(self.motor0SpinBox, SIGNAL("valueChanged(int)"), self.updateMotor0)
+        self.connect(self.motor1SpinBox, SIGNAL("valueChanged(int)"), self.updateMotor1)
+        self.connect(self.motor2SpinBox, SIGNAL("valueChanged(int)"), self.updateMotor2)
+        self.connect(self.motor3SpinBox, SIGNAL("valueChanged(int)"), self.updateMotor3)
+
+    def updateMotor0(self, value):
+        goodMessage("updateMotor0: new motor value: ", value)
+        self.wilfredCommand.setMotorSpeed(0, value)
+
+    def updateMotor1(self, value):
+        goodMessage("updateMotor1: new motor value: ", value)
+        self.wilfredCommand.setMotorSpeed(1, value)
+
+    def updateMotor2(self, value):
+        goodMessage("updateMotor2: new motor value: ", value)
+        self.wilfredCommand.setMotorSpeed(2, value)
+
+    def updateMotor3(self, value):
+        goodMessage("updateMotor3: new motor value: ", value)
+        self.wilfredCommand.setMotorSpeed(3, value)
+
+
 
 if __name__ == "__main__":
     import sys
-    app = QtGui.QApplication(sys.argv)
-    app.connect(app, QtCore.SIGNAL("lastWindowClosed()"), app, QtCore.SLOT("quit()"))
+    app = QApplication(sys.argv)
+    app.connect(app, SIGNAL("lastWindowClosed()"), app, SLOT("quit()"))
 
     gs = GroundStation()
     gs.show()
