@@ -21,18 +21,35 @@
 # posistion, and then control the craft to the correct zone. Main loop will
 # be a very fast feedback loop.
 
-from PyQt4.QtGui import *
-from PyQt4 import *
-from mainWindow import *
-import sys
+import command
+import driver
+from debug import *
 
+def mainLoop():
+    wilfredCommand = command.Command()
+    wilfredCommand.waitForClient()
+
+    wilfredDriver = driver.Driver()
+
+    while True:
+        commandData = wilfredCommand.getCommand()
+        
+        cmd = commandData.split(' ')[0].strip()
+        args = [arg.strip() for arg in commandData.split(' ')[1:]]
+        
+        
+        # setMotorSpeed (0-3) (0-100)
+        if cmd == "setMotorSpeed":
+            motorNum = int(args[0])
+            motorSpeed = int(args[1])
+            wilfredDriver.setMotorSpeed(motorNum, motorSpeed)
+      
+        elif cmd == "playMeow":
+            goodMessage("wilfred: playing meow from file: ", args[0])
+            wilfredDriver.playMeow(args[0])
+        else:
+            errorMessage("wilfred: command not recognized: ", cmd, ": ", args)
+        
 
 if __name__ == "__main__":
-    
-
-    app = QtGui.QApplication(sys.argv)
-    mainWindow = Ui_MainWindow()
-    mainWindow.setupUi()
-    app.exec_loop()
-
-    
+    mainLoop()

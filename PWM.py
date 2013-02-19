@@ -17,24 +17,22 @@
 #        Set the speed of the PWM from 0-99 based on how fast you'd like the motor to go
 import time
 import sys
-
+from debug import *
 from threading import Thread, Lock
 import RPi.GPIO as GPIO
 
 class PWM:
 
     def __init__(self, pin):
-        print "[*] Starting PWM on pin:", pin
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(pin, GPIO.OUT)    
         self.mPin = pin
-        self.SWITCHING_FREQ = 100.
+        self.SWITCHING_FREQ = 20.
 
-        self.mHighPercent = .5
+        self.mHighPercent = 0
         self.mHighPercentLock = Lock()
 
 
-        print "[+] Starting the PWM Thread"
         self.mThread = Thread(target=self.runPWM)
         try:
             self.mThread.start()
@@ -61,7 +59,6 @@ class PWM:
         # beautiful  /sniff 
         
     def setSpeed(self, value):
-        print "[+] Setting new speed:", value
         self.setHighPercent(value / 100.)
         
     def calculateLowTime(self, switch_freq, highPercent):
@@ -76,9 +73,16 @@ class PWM:
     def setHighPercent(self, value):
         if value > 1 or value < 0:
             print "[-] PWM::setHighPercent must be between 0 and 1"
+        
+        infoMessage("PWM::setHighPercent: setting new HighPercent to:", value)
+
         self.mHighPercentLock.acquire()
         self.mHighPercent = value
         self.mHighPercentLock.release()
+
+        highTime = self.calculateHighTime(self.SWITCHING_FREQ, self.getHighPercent()) 
+        lowTime = self.calculateHighTime(self.SWITCHING_FREQ, 1 - self.getHighPercent())
+        print "HighTime: ", highTime, "lowtime: ", lowTime
         
 def test(motor1):
     print "[*] Begining motor test!"
