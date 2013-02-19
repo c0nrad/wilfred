@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="images">
-    <file>Images/headerImage.xcf</file>
-    <file>Images/headerImage.png</file>
-  </qresource>
-</RCC>
