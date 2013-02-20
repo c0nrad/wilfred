@@ -45,13 +45,13 @@ class PWM:
             highTime = self.calculateHighTime(self.SWITCHING_FREQ, self.getHighPercent()) 
             lowTime = self.calculateHighTime(self.SWITCHING_FREQ, 1 - self.getHighPercent())
         
-            GPIO.output(self.mPin, GPIO.HIGH)
-            #print "[+] High sleep time: ", highTime
-            time.sleep(highTime)
+            if highTime > 0:
+                GPIO.output(self.mPin, GPIO.HIGH)
+                time.sleep(highTime)
 
-            GPIO.output(self.mPin, GPIO.LOW)
-            #print "[+] Low sleep time: ", lowTime
-            time.sleep(lowTime)
+            if lowTime > 0:
+                GPIO.output(self.mPin, GPIO.LOW)
+                time.sleep(lowTime)
     
     def calculateHighTime(self, switchFreq, highPercent):
         highTime = highPercent/switchFreq
