@@ -1,33 +1,25 @@
 import socket
+import sys
+import communication
 from debug import *
 
 class Command:
-    def __init__(self):
-        self.HOST = '192.168.1.2'
-        self.PORT = 1337
-        self.setupSocket()
-
-    def setupSocket(self):
-        infoMessage("command::setupSocket: setting up socket on port: ", self.PORT)        
-        self.mSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.mSock.connect((self.HOST, self.PORT))
-        self.mConn = self.mSock 
-        
-    def closeConnection(self):
-        warningMessage("command::closeConnect: closing connection...")
-        self.mConn.close()
-        
-    def getMessage(self):
-        inData = self.mConn.recv(2048).strip()
-        goodMessage("command::getCommand: recieved command: \"", inData, "\"")
-        return inData
-
-    def sendCommand(self, data):
-        goodMessage("command::sendMessage: sending message", data)
-        self.mConn.sendall(data)
+    def __init__(self, comm):
+        self.mComm = comm
         
     def setMotorSpeed(self, motorNum, speed):
         infoMessage("command::setMotorSpeed: motorNum: ", motorNum, " motorSpeed: ", speed)
+
+        try:
+            motorNum = str(motorNum).strip()
+            speed = str(speed).strip()
+        except ValueError:
+            errorMessage("command::setMotorSpeed: cannot convert \"", speed, "\" to string")
+            return        
         
         payload = "setMotorSpeed " + str(motorNum).strip() + " " + str(speed).strip() + "\n"
-        self.sendCommand(payload)
+        self.mComm.sendCommand(payload)
+
+    def playMeow(self, fileName):
+        infoMessage("command::playMeow: fileName: ", fileName)
+        payload = "playMeow " + str(motorNum)
