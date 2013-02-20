@@ -3,7 +3,7 @@ from debug import *
 
 class Command:
     def __init__(self):
-        self.HOST = '192.168.1.3'
+        self.HOST = '192.168.1.2'
         self.PORT = 1337
         self.setupSocket()
 
