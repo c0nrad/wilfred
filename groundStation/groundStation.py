@@ -44,10 +44,10 @@ class GroundStation(QMainWindow, mainWindow.Ui_MainWindow):
     def connectToWilfred(self):
         ip = str(self.ipAddressEdit.text()).strip()
         port = int(self.portEdit.text())
-        self.wilfredCommand.setupSocket(ip, port)
+        self.wilfredCommunication.setupSocket(ip, port)
         
     def disconnectFromWilfred(self):
-        self.wilfredComm.closeConnection()
+        self.wilfredCommunication.closeConnection()
 
 if __name__ == "__main__":
     import sys

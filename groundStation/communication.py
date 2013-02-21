@@ -31,7 +31,7 @@ class Communication:
         goodMessage("communication::setupSocket: connected to wilfred!")
         
     def checkConnection(self):
-        if not self.mSock or not self.mComm or self.mSock == "" or self.mComm == "":
+        if not self.mSock or not self.mConn or self.mSock == "" or self.mConn == "":
             return False
         else:
             return True
