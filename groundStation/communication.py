@@ -7,9 +7,10 @@ class Communication:
         self.mHost = '192.168.1.2'
         self.mPort = 1337
         self.TIMEOUT = 3
-        self.setupSocket(self.mHost, self.mPort)
         self.mSock = False
         self.mConn = False
+
+        self.setupSocket(self.mHost, self.mPort)
 
     def setupSocket(self, host, port):
         self.mHost = host
@@ -27,11 +28,13 @@ class Communication:
                 self.mSock.close()
                 errorMessage("Could not open socket on \host: ", self.mHost, " port: ",
                              self.mPort, " reason: ", socketError)
-                return
+            self.mSock = False
+            self.mConn = False
+            return
         goodMessage("communication::setupSocket: connected to wilfred!")
         
     def checkConnection(self):
-        if not self.mSock or not self.mConn or self.mSock == "" or self.mConn == "":
+        if not self.mSock:
             return False
         else:
             return True
@@ -56,7 +59,7 @@ class Communication:
             errorMessage("communication::sendCommand: no connection established")
             return 
 
-        goodMessage("communication::sendMessage: sending message", data)
+        goodMessage("communication::sendMessage: sending message: ", data.strip())
         self.mConn.sendall(data)
         
 

@@ -23,3 +23,13 @@ class Command:
     def playMeow(self, fileName):
         infoMessage("command::playMeow: fileName: ", fileName)
         payload = "playMeow " + str(motorNum)
+
+
+    def getAccel(self):
+        infoMessage("command::getAccel: asking wilfred for acceleration...")
+        
+        payload = "getAccel\n"
+        self.mComm.sendCommand(payload)
+
+        response = self.mComm.getMessage()
+        return [word.strip() for word in  response.strip('()').split(',')]

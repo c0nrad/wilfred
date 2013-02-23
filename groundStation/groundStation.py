@@ -24,6 +24,12 @@ class GroundStation(QMainWindow, mainWindow.Ui_MainWindow):
         # Connect
         self.connect(self.connectButton, SIGNAL("pressed()"), self.connectToWilfred)
         self.connect(self.disconnectButton, SIGNAL("pressed()"), self.disconnectFromWilfred)
+        
+        # Accelerometer
+        self.initAccelerometers()
+
+        # Abort Button
+        self.connect(self.abortButton, SIGNAL("pressed()"), self.abortWilfred)
 
     def updateMotor0(self, value):
         goodMessage("updateMotor0: new motor value: ", value)
@@ -48,6 +54,25 @@ class GroundStation(QMainWindow, mainWindow.Ui_MainWindow):
         
     def disconnectFromWilfred(self):
         self.wilfredCommunication.closeConnection()
+
+    def initAccelerometers(self):
+        timer = QTimer(self);
+        self.connect(timer, SIGNAL("timeout()"), self.updateAccelerometer)
+        self._counter = 0
+        timer.start(1000);
+
+    def updateAccelerometer(self):
+        if not self.wilfredCommunication.checkConnection():
+            return
+
+        (xAccel, yAccel, zAccel) = self.wilfredCommand.getAccel()
+        self.xAccelEdit.setText(str(xAccel))
+        self.yAccelEdit.setText(str(yAccel))
+        self.zAccelEdit.setText(str(zAccel))
+
+    def abortWilfred(self):
+        self.masterMotorSlider.setValue(0)
+        errorMessage("Aborting wilfred")
 
 if __name__ == "__main__":
     import sys

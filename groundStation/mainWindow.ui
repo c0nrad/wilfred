@@ -28,7 +28,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
@@ -97,7 +97,7 @@
           <string>Disconnect</string>
          </property>
         </widget>
-        <widget class="QWidget" name="">
+        <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
            <x>11</x>
@@ -413,7 +413,7 @@
                  </property>
                  <layout class="QGridLayout" name="gridLayout">
                   <item row="0" column="0">
-                   <widget class="QLineEdit" name="lineEdit">
+                   <widget class="QLineEdit" name="xAccelEdit">
                     <property name="styleSheet">
                      <string notr="true">background-color: rgb(6, 5, 4);
 color: rgb(64, 181, 64);
@@ -430,11 +430,11 @@ font: 9pt &quot;Monospace&quot;;</string>
                <item>
                 <widget class="QGroupBox" name="groupBox_9">
                  <property name="title">
-                  <string>X-Axis</string>
+                  <string>Y-Axis</string>
                  </property>
                  <layout class="QGridLayout" name="gridLayout_2">
                   <item row="0" column="0">
-                   <widget class="QLineEdit" name="lineEdit_2">
+                   <widget class="QLineEdit" name="yAccelEdit">
                     <property name="styleSheet">
                      <string notr="true">background-color: rgb(6, 5, 4);
 color: rgb(64, 181, 64);
@@ -451,11 +451,11 @@ font: 9pt &quot;Monospace&quot;;</string>
                <item>
                 <widget class="QGroupBox" name="groupBox_10">
                  <property name="title">
-                  <string>X-Axis</string>
+                  <string>Z-Axis</string>
                  </property>
                  <layout class="QGridLayout" name="gridLayout_3">
                   <item row="0" column="0">
-                   <widget class="QLineEdit" name="lineEdit_3">
+                   <widget class="QLineEdit" name="zAccelEdit">
                     <property name="styleSheet">
                      <string notr="true">background-color: rgb(6, 5, 4);
 color: rgb(64, 181, 64);
@@ -503,7 +503,7 @@ font: 9pt &quot;Monospace&quot;;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton">
+             <widget class="QPushButton" name="abortButton">
               <property name="font">
                <font>
                 <pointsize>72</pointsize>
