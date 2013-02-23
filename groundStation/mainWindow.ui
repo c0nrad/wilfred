@@ -7,15 +7,15 @@
     <x>0</x>
     <y>0</y>
     <width>1018</width>
-    <height>829</height>
+    <height>678</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_5">
-    <item>
+   <layout class="QGridLayout" name="gridLayout_5">
+    <item row="0" column="0" colspan="8">
      <widget class="QLabel" name="label">
       <property name="text">
        <string/>
@@ -25,36 +25,305 @@
       </property>
      </widget>
     </item>
-    <item>
-     <widget class="QTabWidget" name="tabWidget">
-      <property name="currentIndex">
-       <number>1</number>
+    <item row="1" column="0" rowspan="4">
+     <widget class="QGroupBox" name="groupBox_17">
+      <property name="title">
+       <string>Motor A</string>
       </property>
-      <widget class="QWidget" name="tab_2">
-       <attribute name="title">
-        <string>Connect</string>
-       </attribute>
-       <widget class="QGroupBox" name="groupBox_11">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>20</y>
-          <width>224</width>
-          <height>124</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>Connect</string>
-        </property>
-        <widget class="QPushButton" name="connectButton">
-         <property name="geometry">
-          <rect>
-           <x>138</x>
-           <y>50</y>
-           <width>75</width>
-           <height>24</height>
-          </rect>
+      <layout class="QVBoxLayout" name="verticalLayout_19">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_18">
+         <item>
+          <spacer name="horizontalSpacer_31">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>13</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSlider" name="motor0Slider">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_32">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>13</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="motor0SpinBox"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="1" rowspan="4">
+     <widget class="QGroupBox" name="groupBox_18">
+      <property name="title">
+       <string>Motor B</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_20">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_19">
+         <item>
+          <spacer name="horizontalSpacer_33">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>13</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSlider" name="motor1Slider">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_34">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>13</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="motor1SpinBox"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="2" rowspan="4">
+     <widget class="QGroupBox" name="groupBox_19">
+      <property name="title">
+       <string>Motor C</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_21">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_20">
+         <item>
+          <spacer name="horizontalSpacer_35">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>13</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSlider" name="motor2Slider">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_36">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>13</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="motor2SpinBox"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="3" rowspan="4">
+     <widget class="QGroupBox" name="groupBox_20">
+      <property name="title">
+       <string>Motor D</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_22">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_21">
+         <item>
+          <spacer name="horizontalSpacer_37">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>13</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSlider" name="motor3Slider">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_38">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>13</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="motor3SpinBox"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="4" rowspan="2">
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="5" rowspan="4">
+     <widget class="QGroupBox" name="groupBox_21">
+      <property name="title">
+       <string>Master</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_23">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_22">
+         <item>
+          <spacer name="horizontalSpacer_39">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>13</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSlider" name="masterMotorSlider">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_40">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>13</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="masterMotorSpinBox"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="6">
+     <widget class="QGroupBox" name="groupBox_11">
+      <property name="title">
+       <string>Connect</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0" rowspan="2">
+        <layout class="QVBoxLayout" name="verticalLayout_10">
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>IP Address</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="ipAddressEdit">
+           <property name="text">
+            <string>192.168.1.2</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Port Number</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="portEdit">
+           <property name="text">
+            <string>1337</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="1" rowspan="2">
+        <widget class="Line" name="line_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
          </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="connectButton">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -65,28 +334,9 @@
           <string>Connect</string>
          </property>
         </widget>
-        <widget class="Line" name="line_2">
-         <property name="geometry">
-          <rect>
-           <x>120</x>
-           <y>25</y>
-           <width>16</width>
-           <height>88</height>
-          </rect>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-        </widget>
+       </item>
+       <item row="1" column="2">
         <widget class="QPushButton" name="disconnectButton">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>80</y>
-           <width>75</width>
-           <height>24</height>
-          </rect>
-         </property>
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -97,452 +347,188 @@
           <string>Disconnect</string>
          </property>
         </widget>
-        <widget class="QWidget" name="layoutWidget">
-         <property name="geometry">
-          <rect>
-           <x>11</x>
-           <y>25</y>
-           <width>112</width>
-           <height>88</height>
-          </rect>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="7">
+     <widget class="QGroupBox" name="groupBox_6">
+      <property name="title">
+       <string>Meower</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QComboBox" name="comboBox">
+         <item>
+          <property name="text">
+           <string>Meow1.wav</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>SurpriseMFcker.wav</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="text">
+          <string>Launch</string>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_10">
-          <item>
-           <widget class="QLabel" name="label_2">
-            <property name="text">
-             <string>IP Address</string>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="2" column="6" colspan="2">
+     <widget class="QGroupBox" name="groupBox_7">
+      <property name="title">
+       <string>Accelerometer</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QGroupBox" name="groupBox_8">
+         <property name="title">
+          <string>X-Axis</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="0">
+           <widget class="QLineEdit" name="xAccelEdit">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(6, 5, 4);
+color: rgb(64, 181, 64);
+font: 9pt &quot;Monospace&quot;;</string>
             </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="ipAddressEdit">
-            <property name="text">
-             <string>192.168.1.3</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_3">
-            <property name="text">
-             <string>Port Number</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="portEdit">
-            <property name="text">
-             <string>1337</string>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
          </layout>
         </widget>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="tab">
-       <attribute name="title">
-        <string>Control</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_4">
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <item>
-           <widget class="QGroupBox" name="groupBox">
-            <property name="title">
-             <string>Motor A</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout">
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout">
-               <item>
-                <spacer name="horizontalSpacer">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>13</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="QSlider" name="motor0Slider">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_2">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>13</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <widget class="QSpinBox" name="motor0SpinBox"/>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QGroupBox" name="groupBox_2">
-            <property name="title">
-             <string>Motor B</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_6">
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_5">
-               <item>
-                <spacer name="horizontalSpacer_9">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>13</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="QSlider" name="motor1Slider">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_10">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>13</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <widget class="QSpinBox" name="motor1SpinBox"/>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QGroupBox" name="groupBox_3">
-            <property name="title">
-             <string>Motor C</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_7">
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_6">
-               <item>
-                <spacer name="horizontalSpacer_11">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>13</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="QSlider" name="motor2Slider">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_12">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>13</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <widget class="QSpinBox" name="motor2SpinBox"/>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QGroupBox" name="groupBox_4">
-            <property name="title">
-             <string>Motor D</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_8">
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_7">
-               <item>
-                <spacer name="horizontalSpacer_13">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>13</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="QSlider" name="motor3Slider">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_14">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>13</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <widget class="QSpinBox" name="motor3SpinBox"/>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="Line" name="line">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QGroupBox" name="groupBox_5">
-            <property name="title">
-             <string>Master</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_9">
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_8">
-               <item>
-                <spacer name="horizontalSpacer_15">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>13</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="QSlider" name="masterMotorSlider">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_16">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>13</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <widget class="QSpinBox" name="masterMotorSpinBox"/>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_3">
-            <item>
-             <widget class="QGroupBox" name="groupBox_7">
-              <property name="title">
-               <string>Accelerometer</string>
-              </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_2">
-               <item>
-                <widget class="QGroupBox" name="groupBox_8">
-                 <property name="title">
-                  <string>X-Axis</string>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout">
-                  <item row="0" column="0">
-                   <widget class="QLineEdit" name="xAccelEdit">
-                    <property name="styleSheet">
-                     <string notr="true">background-color: rgb(6, 5, 4);
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_9">
+         <property name="title">
+          <string>Y-Axis</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="0" column="0">
+           <widget class="QLineEdit" name="yAccelEdit">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(6, 5, 4);
 color: rgb(64, 181, 64);
 font: 9pt &quot;Monospace&quot;;</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QGroupBox" name="groupBox_9">
-                 <property name="title">
-                  <string>Y-Axis</string>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout_2">
-                  <item row="0" column="0">
-                   <widget class="QLineEdit" name="yAccelEdit">
-                    <property name="styleSheet">
-                     <string notr="true">background-color: rgb(6, 5, 4);
-color: rgb(64, 181, 64);
-font: 9pt &quot;Monospace&quot;;</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QGroupBox" name="groupBox_10">
-                 <property name="title">
-                  <string>Z-Axis</string>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout_3">
-                  <item row="0" column="0">
-                   <widget class="QLineEdit" name="zAccelEdit">
-                    <property name="styleSheet">
-                     <string notr="true">background-color: rgb(6, 5, 4);
-color: rgb(64, 181, 64);
-font: 9pt &quot;Monospace&quot;;</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="QGroupBox" name="groupBox_6">
-              <property name="title">
-               <string>Meower</string>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_2">
-               <item>
-                <widget class="QComboBox" name="comboBox">
-                 <item>
-                  <property name="text">
-                   <string>Meow1.wav</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>SurpriseMFcker.wav</string>
-                  </property>
-                 </item>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="pushButton_2">
-                 <property name="text">
-                  <string>Launch</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="abortButton">
-              <property name="font">
-               <font>
-                <pointsize>72</pointsize>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color: rgb(255, 0, 0);</string>
-              </property>
-              <property name="text">
-               <string>ABORT</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
           </item>
          </layout>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="plainTextEdit">
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(6, 5, 4);
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_10">
+         <property name="title">
+          <string>Z-Axis</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0">
+           <widget class="QLineEdit" name="zAccelEdit">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(6, 5, 4);
 color: rgb(64, 181, 64);
 font: 9pt &quot;Monospace&quot;;</string>
-          </property>
-          <property name="plainText">
-           <string>[*] Wilfred is booting up... Done!
-[*] Initalizing Drivers...   Done!
-[+] MotorA: speed set to 50</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="3" column="6">
+     <widget class="QGroupBox" name="groupBox_12">
+      <property name="title">
+       <string>Sonar</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLineEdit" name="sonarEdit">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(6, 5, 4);
+color: rgb(64, 181, 64);
+font: 9pt &quot;Monospace&quot;;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="3" column="7">
+     <widget class="QGroupBox" name="groupBox_16">
+      <property name="title">
+       <string>Camera</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QPushButton" name="cameraButton">
+         <property name="text">
+          <string>Take Picture</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="4" column="6" colspan="2">
+     <widget class="QPushButton" name="abortButton">
+      <property name="font">
+       <font>
+        <pointsize>72</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>ABORT</string>
+      </property>
      </widget>
     </item>
    </layout>
+   <zorder>label</zorder>
+   <zorder>groupBox_12</zorder>
+   <zorder>groupBox_6</zorder>
+   <zorder>groupBox_7</zorder>
+   <zorder>abortButton</zorder>
+   <zorder>abortButton</zorder>
+   <zorder>groupBox_6</zorder>
+   <zorder>groupBox_12</zorder>
+   <zorder>groupBox_7</zorder>
+   <zorder>groupBox_16</zorder>
+   <zorder>groupBox_11</zorder>
+   <zorder>groupBox_17</zorder>
+   <zorder>groupBox_18</zorder>
+   <zorder>groupBox_19</zorder>
+   <zorder>groupBox_20</zorder>
+   <zorder>groupBox_21</zorder>
+   <zorder>line</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -558,37 +544,22 @@ font: 9pt &quot;Monospace&quot;;</string>
  </widget>
  <resources>
   <include location="resources.qrc"/>
+  <include location="../../../.designer/backup/resources.qrc"/>
  </resources>
  <connections>
   <connection>
-   <sender>motor3Slider</sender>
+   <sender>motor0SpinBox</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>motor3SpinBox</receiver>
+   <receiver>motor0Slider</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>370</x>
-     <y>471</y>
+     <x>52</x>
+     <y>620</y>
     </hint>
     <hint type="destinationlabel">
-     <x>377</x>
-     <y>642</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>motor1SpinBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>motor1Slider</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>157</x>
-     <y>632</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>534</y>
+     <x>60</x>
+     <y>585</y>
     </hint>
    </hints>
   </connection>
@@ -599,12 +570,12 @@ font: 9pt &quot;Monospace&quot;;</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>66</x>
-     <y>453</y>
+     <x>58</x>
+     <y>423</y>
     </hint>
     <hint type="destinationlabel">
-     <x>80</x>
-     <y>641</y>
+     <x>77</x>
+     <y>628</y>
     </hint>
    </hints>
   </connection>
@@ -615,92 +586,28 @@ font: 9pt &quot;Monospace&quot;;</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>168</x>
-     <y>490</y>
+     <x>184</x>
+     <y>395</y>
     </hint>
     <hint type="destinationlabel">
-     <x>168</x>
-     <y>635</y>
+     <x>179</x>
+     <y>631</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>motor0SpinBox</sender>
+   <sender>motor1SpinBox</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>motor0Slider</receiver>
+   <receiver>motor1Slider</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>62</x>
-     <y>627</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>64</x>
-     <y>593</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>masterMotorSlider</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>motor3Slider</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>506</x>
-     <y>401</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>369</x>
-     <y>399</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>masterMotorSlider</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>masterMotorSpinBox</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>513</x>
-     <y>510</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>501</x>
-     <y>637</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>masterMotorSlider</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>motor2Slider</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>511</x>
-     <y>372</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>260</x>
-     <y>349</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>masterMotorSpinBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>masterMotorSlider</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>492</x>
+     <x>155</x>
      <y>634</y>
     </hint>
     <hint type="destinationlabel">
-     <x>511</x>
-     <y>594</y>
+     <x>177</x>
+     <y>461</y>
     </hint>
    </hints>
   </connection>
@@ -711,44 +618,12 @@ font: 9pt &quot;Monospace&quot;;</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>260</x>
-     <y>641</y>
+     <x>273</x>
+     <y>629</y>
     </hint>
     <hint type="destinationlabel">
-     <x>262</x>
+     <x>295</x>
      <y>527</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>motor3SpinBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>motor3Slider</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>356</x>
-     <y>635</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>372</x>
-     <y>522</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>masterMotorSlider</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>motor0Slider</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>512</x>
-     <y>303</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>60</x>
-     <y>299</y>
     </hint>
    </hints>
   </connection>
@@ -759,12 +634,92 @@ font: 9pt &quot;Monospace&quot;;</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>266</x>
-     <y>489</y>
+     <x>299</x>
+     <y>475</y>
     </hint>
     <hint type="destinationlabel">
-     <x>285</x>
-     <y>631</y>
+     <x>295</x>
+     <y>625</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>motor3Slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>motor3SpinBox</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>416</x>
+     <y>456</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>410</x>
+     <y>628</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>motor3SpinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>motor3Slider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>383</x>
+     <y>622</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>411</x>
+     <y>419</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>masterMotorSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>masterMotorSpinBox</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>539</x>
+     <y>514</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>539</x>
+     <y>630</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>masterMotorSpinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>masterMotorSlider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>504</x>
+     <y>626</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>528</x>
+     <y>461</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>masterMotorSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>motor0Slider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>536</x>
+     <y>293</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>61</x>
+     <y>280</y>
     </hint>
    </hints>
   </connection>
@@ -775,12 +730,44 @@ font: 9pt &quot;Monospace&quot;;</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>503</x>
-     <y>324</y>
+     <x>531</x>
+     <y>306</y>
     </hint>
     <hint type="destinationlabel">
-     <x>167</x>
-     <y>322</y>
+     <x>182</x>
+     <y>307</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>masterMotorSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>motor2Slider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>529</x>
+     <y>343</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>298</x>
+     <y>326</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>masterMotorSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>motor3Slider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>537</x>
+     <y>364</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>411</x>
+     <y>353</y>
     </hint>
    </hints>
   </connection>

@@ -71,6 +71,8 @@ class GroundStation(QMainWindow, mainWindow.Ui_MainWindow):
         self.zAccelEdit.setText(str(zAccel))
 
     def abortWilfred(self):
+
+        self.masterMotorSlider.setValue(1)
         self.masterMotorSlider.setValue(0)
         errorMessage("Aborting wilfred")
 

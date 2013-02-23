@@ -44,6 +44,9 @@ class Communication:
 
         if self.checkConnection():
             self.mConn.close()
+            self.mSock = False
+            self.mConn = False
+
         
     def getMessage(self):
         if not self.checkConnection():
