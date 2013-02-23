@@ -52,3 +52,8 @@ class Sonar:
 
   def cleanup(self):
     GPIO.cleanup()
+
+
+if __name__ == "__main__":
+  s = Sonar()
+  s.readContinuous()
