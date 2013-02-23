@@ -12,7 +12,12 @@ class Command:
         self.mSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.mSock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.mSock.bind((self.HOST, self.PORT))
-        self.mSock.listen(1)    
+        self.mSock.listen(1)  
+
+    def checkConnection(self):
+        if not self.mConn:
+            return False
+        return True
         
     def waitForClient(self):
         infoMessage("command::waitForClient: waiting for client...")
@@ -25,6 +30,13 @@ class Command:
         
     def getCommand(self):
         inData = self.mConn.recv(2048).strip()
+        if not inData:
+            errorMessage("command::getCommand: connection is dead!")
+            self.mConn = False
+
+        if inData == "":
+            return ""
+
         goodMessage("command::getCommand: recieved command: \"", inData, "\"")
         return inData
 
