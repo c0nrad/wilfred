@@ -26,15 +26,15 @@ import driver
 from debug import *
 
 def mainLoop():
-    wilfredCommand = command.Command()
-    wilfredCommand.waitForClient()
+    wilfredCommunication = command.Command()
+    wilfredCommunication.waitForClient()
 
-    wilfredDriver = driver.Driver()
+    wilfredCommand = command.Command()
 
     while True:
-        if not wilfredCommand.checkConnection():
-            wilfredCommand.waitForClient()
-        commands = wilfredCommand.getCommand()
+        if not wilfredCommunication.checkConnection():
+            wilfredCommunication.waitForClient()
+        commands = wilfredCommunication.getCommand()
         
 
         for commandData in commands.split('\n'):
@@ -47,13 +47,13 @@ def mainLoop():
             if cmd == "setMotorSpeed":
                 motorNum = int(args[0])
                 motorSpeed = int(args[1])
-                wilfredDriver.setMotorSpeed(motorNum, motorSpeed)
+                wilfredCommand.setMotorSpeed(motorNum, motorSpeed)
             elif cmd == "playMeow":
                 goodMessage("wilfred: playing meow from file: ", args[0])
-                wilfredDriver.playMeow(args[0])
+                wilfredCommand.playMeow(args[0])
             elif cmd == "getAccel":
                 goodMessage("wilfred: returning acceleration...")
-                wilfredCommand.sendMessage("(0, 0, 0)")
+                wilfredCommunication.sendMessage("(0, 0, 0)")
             else:
                 errorMessage("wilfred: command not recognized: ", cmd, ": ", args)
         

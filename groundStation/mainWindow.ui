@@ -513,10 +513,6 @@ font: 9pt &quot;Monospace&quot;;</string>
     </item>
    </layout>
    <zorder>label</zorder>
-   <zorder>groupBox_12</zorder>
-   <zorder>groupBox_6</zorder>
-   <zorder>groupBox_7</zorder>
-   <zorder>abortButton</zorder>
    <zorder>abortButton</zorder>
    <zorder>groupBox_6</zorder>
    <zorder>groupBox_12</zorder>

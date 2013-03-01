@@ -2,46 +2,45 @@ import socket
 from debug import *
 
 class Command:
-    def __init__(self):
-        self.HOST = ''
-        self.PORT = 1337
-        self.setupSocket()
+    def __init__(self, comm):
+        self.mComm = comm
 
-    def setupSocket(self):
-        infoMessage("command::setupSocket: setting up socket on port: ", self.PORT)
-        self.mSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.mSock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        self.mSock.bind((self.HOST, self.PORT))
-        self.mSock.listen(1)  
+        self.MOTOR_PIN_0 = 3
+        self.MOTOR_PIN_1 = 5
+        self.MOTOR_PIN_2 = 7
+        self.MOTOR_PIN_3 = 11
 
-    def checkConnection(self):
-        if not self.mConn:
-            return False
-        return True
+        self.mMotor0 = PWM.PWM(self.MOTOR_PIN_0)
+        self.mMotor1 = PWM.PWM(self.MOTOR_PIN_1)
+        self.mMotor2 = PWM.PWM(self.MOTOR_PIN_2)
+        self.mMotor3 = PWM.PWM(self.MOTOR_PIN_3)
         
-    def waitForClient(self):
-        infoMessage("command::waitForClient: waiting for client...")
-        self.mConn, addr = self.mSock.accept()
-        goodMessage("command::waitForClient: client connected from: ", addr)
-        
-    def closeConnection(self):
-        warningMessage("command::closeConnect: closing connection...")
-        self.mConn.close()
-        
-    def getCommand(self):
-        inData = self.mConn.recv(2048).strip()
-        if not inData:
-            errorMessage("command::getCommand: connection is dead!")
-            self.mConn = False
+    def setMotorSpeed(self, motorNum, speed):
+        goodMessage("command::setMotorSpeed: motorNum: ", motorNum, " speed: ", speed)
 
-        if inData == "":
-            return ""
+        if motorNum > 3 or motorNum < 0:
+            errorMessage("command::setMotorSpeed: ", motorNum, " is not a value motor number")
 
-        goodMessage("command::getCommand: recieved command: \"", inData, "\"")
-        return inData
-
-    def sendMessage(self, data):
-        goodMessage("command::sendMessage: sending message", data)
-        self.mConn.sendall(data)
+        if motorNum == 0:
+            self.mMotor0.setSpeed(speed)
+        elif motorNum == 1:
+            self.mMotor1.setSpeed(speed)
+        elif motorNum == 2:
+            self.mMotor2.setSpeed(speed)
+        elif motorNum == 3:
+            self.mMotor3.setSpeed(speed)
+        else:
+            errorMessage("command::setMotorSpeed: ", motorNum, " is not a value motor number")
         
+
+    def playMeow(self, fileName):
+        goodMessage("command::playMeow: playing meow from file: ", fileName)
+        warningMessage("playMeow not implemented")
+        
+
+    def getAccel(self):
+        infoMessage("command::getAccel returning the current accelerometer readings")
+        payload = "(0, 0, 0)\n"
+        self.mComm.sendMessage(payload)
+
         
