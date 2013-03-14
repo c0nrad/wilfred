@@ -7,21 +7,11 @@ import os
 import logging
 import RPi.GPIO as GPIO
 
-def __init__(self, pins):        
+if __name__ == "__main__":      
 	logging.basicConfig(filename='dX.log',level=logging.DEBUG)
 	logging.info('Start Log:')
 
 	GPIO.setmode(GPIO.BCM)
-	self.always = 1
-	
-	# change these as desired - they're the pins connected from the
-	# SPI port on the ADC to the Cobbler
-	SPICLK = 18
-	SPIMISO = 23
-	SPIMOSI = 24
-	SPICS = 25
-	accslp=11
-
 
 	# set up the SPI interface pins
 	GPIO.setup(SPIMOSI, GPIO.OUT)	#Master output
@@ -30,16 +20,27 @@ def __init__(self, pins):
 	GPIO.setup(SPICS, GPIO.OUT)		#??channels
 	GPIO.setup(accslp,GPIO.OUT)		#accslp --gains to read acc values
 
+	
+	always = 1
+
+	# change these as desired - they're the pins connected from the
+	# SPI port on the ADC to the Cobbler
+	SPICLK = 18
+	SPIMISO = 23
+	SPIMOSI = 24
+	SPICS = 25
+	accslp=11
+
 	GPIO.output(accslp,True) 			# set acc sleep high
 
 	#axis setup
-	self.vref =3.3				#voltage ref
-	self.vzero=2.2			#0 volt ref
-	self.Sensitivity = 1.5		# Selectable Sensitivity (1.5g,  or 6g)
+	vref =3.3				#voltage ref
+	vzero=2.2				#0 volt ref
+	Sensitivity = 1.5		# Selectable Sensitivity (1.5g,  or 6g)
 	
 
 	# Get values
-	x = getX(self,X)
+	x = getX(vref, vzero, Sensitivity, always)
 
 	# hang out and do nothing for a half second
         time.sleep(0.5)
@@ -82,12 +83,11 @@ def readad(adcnum, clockpin, mosipin, misopin, cspin):
         return adcout
 
 
-def getX(self,X)
+def getX(vref, vzero, Sensitivity, always):
 	# set inintal values
 	x = 0
 
 	 # this keeps track of the last value
-
 	lastX= 0      
 
 	tolerance = 2       # to keep from being jittery we'll only change
