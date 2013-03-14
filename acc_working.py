@@ -1,15 +1,51 @@
+#Script for reading change in acc
+#Daryl W. Bennett --kd8bny@gmail.com
+
 #!/usr/bin/env python
 import time
 import os
 import logging
 import RPi.GPIO as GPIO
 
-GPIO.setmode(GPIO.BCM)
-always = 1
-logging.basicConfig(filename='dX.log',level=logging.DEBUG)
-logging.info('Start Log:')
+def __init__(self, pins):        
+	logging.basicConfig(filename='dX.log',level=logging.DEBUG)
+	logging.info('Start Log:')
+
+	GPIO.setmode(GPIO.BCM)
+	self.always = 1
+	
+	# change these as desired - they're the pins connected from the
+	# SPI port on the ADC to the Cobbler
+	SPICLK = 18
+	SPIMISO = 23
+	SPIMOSI = 24
+	SPICS = 25
+	accslp=11
 
 
+	# set up the SPI interface pins
+	GPIO.setup(SPIMOSI, GPIO.OUT)	#Master output
+	GPIO.setup(SPIMISO, GPIO.IN)		#Master input
+	GPIO.setup(SPICLK, GPIO.OUT)		#Clk
+	GPIO.setup(SPICS, GPIO.OUT)		#??channels
+	GPIO.setup(accslp,GPIO.OUT)		#accslp --gains to read acc values
+
+	GPIO.output(accslp,True) 			# set acc sleep high
+
+	#axis setup
+	self.vref =3.3				#voltage ref
+	self.vzero=2.2			#0 volt ref
+	self.Sensitivity = 1.5		# Selectable Sensitivity (1.5g,  or 6g)
+	
+
+	# Get values
+	x = getX(self,X)
+
+	# hang out and do nothing for a half second
+        time.sleep(0.5)
+
+
+# readadc code repect goes to adafruit
 # read SPI data from MCP3008 chip, 8 possible adc's (0 thru 7) --KEEP
 def readad(adcnum, clockpin, mosipin, misopin, cspin):     
         if ((adcnum > 7) or (adcnum < 0)):
@@ -46,67 +82,42 @@ def readad(adcnum, clockpin, mosipin, misopin, cspin):
         return adcout
 
 
-# change these as desired - they're the pins connected from the
-# SPI port on the ADC to the Cobbler
-SPICLK = 18
-SPIMISO = 23
-SPIMOSI = 24
-SPICS = 25
-accslp=11
+def getX(self,X)
+	# set inintal values
+	x = 0
 
-# set up the SPI interface pins
-GPIO.setup(SPIMOSI, GPIO.OUT)
-GPIO.setup(SPIMISO, GPIO.IN)
-GPIO.setup(SPICLK, GPIO.OUT)
-GPIO.setup(SPICS, GPIO.OUT)
-GPIO.setup(slp,GPIO.OUT)
+	 # this keeps track of the last value
 
-#axis setup
-vref =3.3	#voltage ref
-vzero=2.2	#0 volt ref
-Sensitivity = 1.5 # Selectable Sensitivity (1.5g,  or 6g)
-GPIO.output(accslp,True) # set acc sleep high
+	lastX= 0      
 
-# set inintal values
-x = 0
-y=0
-z=0
+	tolerance = 2       # to keep from being jittery we'll only change
 
 
-lastx = 0       # this keeps track of the last potentiometer value
-lasty=0
-lastz =0
+	while True:
 
-tolerance = 2       # to keep from being jittery we'll only change
-                    # volume when the pot has moved more than 5 'counts'
+        	# delta X
+        	dX = False
 
+        	# read the analog pin
+        	dX_value = readadc(x, SPICLK, SPIMOSI, SPIMISO, SPICS)
 
-while True:
+	        # how much has it changed since the last read?
+        	adjX = abs(dX_value - lastX)
 
-        # delta X
-        dX = False
+        	if always:
+        	        print "dX:", dX_value
+        	        print "adjX:", adjX
+        	        print "lastX", lastX
 
-        # read the analog pin
-        dX_value = readadc(x, SPICLK, SPIMOSI, SPIMISO, SPICS)
-        # how much has it changed since the last read?
-        adjX = abs(dX_value - lastX)
+        	if ( adjX > tolerance ):
+        	       dX = True
 
-        if always:
-                print "dX:", dX_value
-                print "adjX:", adjX
-                print "lastX", lastX
+        	if always:
+        	        print "dX changed", dX
 
-        if ( adjX > tolerance ):
-               dX = True
-
-        if always:
-                print "dX changed", dX
-
-        if ( dX ):
-                logging.info('dX:',dX_value)
-
-		x = (dX_value * vref / 1023 - vzero) / Sensitivity
-        # save the potentiometer reading for the next loop
-        lastX = dX_value
-        # hang out and do nothing for a half second
-        time.sleep(0.5)
+	        if ( dX ):
+			x = (dX_value * vref / 1023 - vzero) / Sensitivity	#ouput in volts
+			logging.info('X read in volts:',x)
+	        # save the potentiometer reading for the next loop
+	        lastX = dX_value
+	return x        
