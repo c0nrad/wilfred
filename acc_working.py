@@ -45,13 +45,6 @@ def readad(adcnum, clockpin, mosipin, misopin, cspin):
         adcout >>= 1       # first bit is 'null' so drop it
         return adcout
 
-def accSlp(in_value,out_value):
-	while in_value:
-		time.sleep(0.05)
-		value  = True
-		time.sleep(0.05)
-		value = False
-	return value
 
 # change these as desired - they're the pins connected from the
 # SPI port on the ADC to the Cobbler
@@ -59,7 +52,7 @@ SPICLK = 18
 SPIMISO = 23
 SPIMOSI = 24
 SPICS = 25
-slp=11
+accslp=11
 
 # set up the SPI interface pins
 GPIO.setup(SPIMOSI, GPIO.OUT)
@@ -69,20 +62,26 @@ GPIO.setup(SPICS, GPIO.OUT)
 GPIO.setup(slp,GPIO.OUT)
 
 #axis setup
-x = 0;
+vref =3.3	#voltage ref
+vzero=2.2	#0 volt ref
+Sensitivity = 1.5 # Selectable Sensitivity (1.5g,  or 6g)
+GPIO.output(accslp,True) # set acc sleep high
 
-lastX = 0       # this keeps track of the last potentiometer value
+# set inintal values
+x = 0
+y=0
+z=0
+
+
+lastx = 0       # this keeps track of the last potentiometer value
+lasty=0
+lastz =0
+
 tolerance = 2       # to keep from being jittery we'll only change
                     # volume when the pot has moved more than 5 'counts'
 
 
-
-
 while True:
-
-	wantsleep=True
-	#sleep count for acc
-	slp = accSlp(wantsleep,accClk)
 
         # delta X
         dX = False
@@ -105,6 +104,8 @@ while True:
 
         if ( dX ):
                 logging.info('dX:',dX_value)
+
+		x = (dX_value * vref / 1023 - vzero) / Sensitivity
         # save the potentiometer reading for the next loop
         lastX = dX_value
         # hang out and do nothing for a half second
