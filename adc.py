@@ -15,10 +15,10 @@ class ADC():
         # set up the SPI interface pins
         GPIO.setmode(GPIO.BCM)
 
-        GPIO.setup(SPIMOSI, GPIO.OUT)
-        GPIO.setup(SPIMISO, GPIO.IN)
-        GPIO.setup(SPICLK, GPIO.OUT)
-        GPIO.setup(SPICS, GPIO.OUT)
+        GPIO.setup(self.SPIMOSI, GPIO.OUT)
+        GPIO.setup(self.SPIMISO, GPIO.IN)
+        GPIO.setup(self.SPICLK, GPIO.OUT)
+        GPIO.setup(self.SPICS, GPIO.OUT)
 
     # Credit Adafruit
     def readadc(self, adcnum):
@@ -71,11 +71,11 @@ if __name__ == "__main__":
     mv_per_g = 800
     
     while True:
-        accel_mv = [millivolts * adc1.read(adcPin) for adcPin in accel_adc]
+        accel_mv = [millivolts * adc1.readadc(adcPin) for adcPin in accel_adc]
         accel_g = [mv / mv_per_g for mv in accel_mv]
 
         for x in range(len(accel_axis)):
             axis = accel_axis[x]
             print "[",axis,"] Millivolts:", accel_mv[x], "\t g:", accel_g[x]
             
-    time.sleep(.5)
+	time.sleep(2)
