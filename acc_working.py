@@ -7,47 +7,9 @@ import os
 import logging
 import RPi.GPIO as GPIO
 
-def __init__(self, pins):        
-	logging.basicConfig(filename='dX.log',level=logging.DEBUG)
-	logging.info('Start Log:')
-
-	GPIO.setmode(GPIO.BCM)
-	self.always = 1
-	
-	# change these as desired - they're the pins connected from the
-	# SPI port on the ADC to the Cobbler
-	SPICLK = 18
-	SPIMISO = 23
-	SPIMOSI = 24
-	SPICS = 25
-	accslp=11
-
-
-	# set up the SPI interface pins
-	GPIO.setup(SPIMOSI, GPIO.OUT)	#Master output
-	GPIO.setup(SPIMISO, GPIO.IN)		#Master input
-	GPIO.setup(SPICLK, GPIO.OUT)		#Clk
-	GPIO.setup(SPICS, GPIO.OUT)		#??channels
-	GPIO.setup(accslp,GPIO.OUT)		#accslp --gains to read acc values
-
-	GPIO.output(accslp,True) 			# set acc sleep high
-
-	#axis setup
-	self.vref =3.3				#voltage ref
-	self.vzero=2.2			#0 volt ref
-	self.Sensitivity = 1.5		# Selectable Sensitivity (1.5g,  or 6g)
-	
-
-	# Get values
-	x = getX(self,X)
-
-	# hang out and do nothing for a half second
-        time.sleep(0.5)
-
-
 # readadc code repect goes to adafruit
 # read SPI data from MCP3008 chip, 8 possible adc's (0 thru 7) --KEEP
-def readad(adcnum, clockpin, mosipin, misopin, cspin):     
+def readadc(adcnum, clockpin, mosipin, misopin, cspin):     
         if ((adcnum > 7) or (adcnum < 0)):
                 return -1
         GPIO.output(cspin, True)
@@ -82,12 +44,11 @@ def readad(adcnum, clockpin, mosipin, misopin, cspin):
         return adcout
 
 
-def getX(self,X)
+def getX(vref, vzero, Sensitivity, always):
 	# set inintal values
 	x = 0
 
 	 # this keeps track of the last value
-
 	lastX= 0      
 
 	tolerance = 2       # to keep from being jittery we'll only change
@@ -120,4 +81,42 @@ def getX(self,X)
 			logging.info('X read in volts:',x)
 	        # save the potentiometer reading for the next loop
 	        lastX = dX_value
-	return x        
+	return x
+	
+if __name__ == "__main__":      
+	logging.basicConfig(filename='dX.log',level=logging.DEBUG)
+	logging.info('Start Log:')
+
+	GPIO.setmode(GPIO.BCM)
+
+	# change these as desired - they're the pins connected from the
+	# SPI port on the ADC to the Cobbler
+	SPICLK = 18
+	SPIMISO = 23
+	SPIMOSI = 24
+	SPICS = 25
+	accslp=11
+	
+	# set up the SPI interface pins
+	GPIO.setup(SPIMOSI, GPIO.OUT)	#Master output
+	GPIO.setup(SPIMISO, GPIO.IN)		#Master input
+	GPIO.setup(SPICLK, GPIO.OUT)		#Clk
+	GPIO.setup(SPICS, GPIO.OUT)		#??channels
+	GPIO.setup(accslp,GPIO.OUT)		#accslp --gains to read acc values
+
+	
+	always = 1
+	GPIO.output(accslp,True) 			# set acc sleep high
+
+	#axis setup
+	vref =3.3				#voltage ref
+	vzero=2.2				#0 volt ref
+	Sensitivity = 1.5		# Selectable Sensitivity (1.5g,  or 6g)
+	
+
+	# Get values
+	x = getX(vref, vzero, Sensitivity, always)
+
+	# hang out and do nothing for a half second
+        time.sleep(0.5)
+    
