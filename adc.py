@@ -1,10 +1,9 @@
 #!/usr/bin/env python
+#Daryl W. Bennett --kd8bny@gmail.com
+#Stuart C. Larsen --sclarsen@mtu.edu
 import time
 import os
 import RPi.GPIO as GPIO
-
-GPIO.setmode(GPIO.BCM)
-DEBUG = 1
 
 class ADC():
     SPICLK = 18     # CLOCK
@@ -14,15 +13,16 @@ class ADC():
 
     def __init__(self):
         # set up the SPI interface pins
+        GPIO.setmode(GPIO.BCM)
+
         GPIO.setup(SPIMOSI, GPIO.OUT)
         GPIO.setup(SPIMISO, GPIO.IN)
         GPIO.setup(SPICLK, GPIO.OUT)
         GPIO.setup(SPICS, GPIO.OUT)
 
-# read SPI data from MCP3008 chip, 8 possible adc's (0 thru 7)
+    # Credit Adafruit
     def readadc(self, adcnum):
-        if ((adcnum > 7) or (adcnum < 0)):
-                return -1
+        assert (adcnum >= 0 and adcnum <= 7), "Not valid adc number"
 
         clockpin = self.SPICLK
         mosipin = self.SPIMOSI
